@@ -1,5 +1,8 @@
-module.exports = (req, res) => {
-    console.log(req.params)
+const CommentDAO = require('../dao/commentDAO')
 
-    res.send('sim')
+module.exports = (req, res) => {
+    CommentDAO.getComments().then((data) => {
+        res.status(200)
+        res.send(data)
+    })
 }
